@@ -42,6 +42,31 @@ function createFeatures(earthquakeData) {
 
   // Send our earthquakes layer to the createMap function/
   createMap(earthquakes);
+
+        //Set Color - lower depth (green) -> greater depth (red)
+        function getColor(depth) {
+          switch (true) {
+          case depth > 90:
+            return "#e92684";
+          case depth > 70: 
+            return "#e95d26"; 
+          case depth > 50:
+            return "#ee9c00";
+          case depth > 30:
+            return "#eecc00";
+          case depth > 10:
+            return "#d4ee00";
+          default:
+            return "#98ee00";
+          }
+        }
+      //Set Radius
+        function getRadius(magnitude) {
+          if (magnitude === 0) {
+            return 1;
+          }
+          return magnitude * 4;
+        }
 }
 
 function createMap(earthquakes) {
